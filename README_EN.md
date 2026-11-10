@@ -22,4 +22,4 @@ For 3D printed model files or any issues and malfunctions with the keyboard, ple
 
 # Corne Keymap
 
-<img src="keymap-drawer/eyelash_corne.svg" >
+<img src="keymap-drawer/eyeslash_corne.svg" >
