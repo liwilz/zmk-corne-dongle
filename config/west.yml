@@ -4,8 +4,6 @@ manifest:
       url-base: https://github.com/cormoran
     - name: gpeye
       url-base: https://github.com/GPeye
-    - name: tokyo2006
-      url-base: https://github.com/tokyo2006
     - name: englmaxi
       url-base: https://github.com/englmaxi
   projects:
@@ -31,9 +29,13 @@ manifest:
     - name: hammerbeam-slideshow
       remote: gpeye
       revision: main
-    - name: prospector-zmk-module
-      remote: tokyo2006
-      revision: main
+    # prospector-zmk-module (colour-LCD Prospector dongle) removed for now.
+    # Upstream main needs ZMK on Zephyr 4.1 and breaks every v0.3 build.
+    # Last commit that configures cleanly on v0.3 (Zephyr 3.5 / LVGL 8), if
+    # you ever want it back without migrating (the shield itself still needs 4.1):
+    #   - name: prospector-zmk-module
+    #     remote: tokyo2006       # re-add the tokyo2006 remote too
+    #     revision: e5a26f135418426c1a7cb8925467c4b39e8d37a6
     - name: zmk-dongle-display
       remote: englmaxi
       revision: v0.3
