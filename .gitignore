@@ -6,3 +6,7 @@ tools/
 .omo
 
 .zmk/
+
+# flashed firmware
+*.uf2
+*.UF2

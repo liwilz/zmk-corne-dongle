@@ -2,49 +2,43 @@ manifest:
   remotes:
     - name: cormoran
       url-base: https://github.com/cormoran
-    - name: gpeye
-      url-base: https://github.com/GPeye
     - name: englmaxi
       url-base: https://github.com/englmaxi
-    - name: liwilz
-      url-base: https://github.com/liwilz
+    - name: petercpark
+      url-base: https://github.com/petercpark
   projects:
+    # ZMK main (Zephyr 4.1) + cormoran's custom Studio protocol and DYA changes.
+    # The v0.3 setup lives on the `main` branch of this repo (zmk: v0.3-branch+dya).
     - name: zmk
       remote: cormoran
-      revision: v0.3-branch+dya
+      revision: main+dya
       import: app/west.yml
+    # cormoran modules. On `main` these were pinned to their zmk-v0.3.0.0 tags; the
+    # module `main` branches are tried here (compatibility with Zephyr 4.1 untested).
     - name: zmk-behavior-runtime-sensor-rotate
       remote: cormoran
-      revision: zmk-v0.3.0.0
+      revision: main
     - name: zmk-module-ble-management
       remote: cormoran
-      revision: zmk-v0.3.0.0
+      revision: main
     - name: zmk-module-battery-history
       remote: cormoran
       revision: main
     - name: zmk-module-settings-rpc
       remote: cormoran
-      revision: zmk-v0.3.0.0
+      revision: main
     - name: zmk-module-runtime-input-processor
       remote: cormoran
-      revision: zmk-v0.3.0.0
-    - name: hammerbeam-slideshow
-      remote: gpeye
-      revision: main
-    # prospector-zmk-module (colour-LCD Prospector dongle) removed for now.
-    # Upstream main needs ZMK on Zephyr 4.1 and breaks every v0.3 build.
-    # Last commit that configures cleanly on v0.3 (Zephyr 3.5 / LVGL 8), if
-    # you ever want it back without migrating (the shield itself still needs 4.1):
-    #   - name: prospector-zmk-module
-    #     remote: tokyo2006       # re-add the tokyo2006 remote too
-    #     revision: e5a26f135418426c1a7cb8925467c4b39e8d37a6
+      revision: zmk-v0.4.0.0
     - name: zmk-dongle-display
       remote: englmaxi
-      revision: v0.3
-    # Plover HID (steno). Fork of petercpark/zmk-hid-io-plover-hid patched for
-    # ZMK v0.3 (upstream main uses ZMK-main-only endpoint APIs).
+      revision: main
+    # Plover HID (steno). Upstream module, pinned to a commit known to build on ZMK main
+    # (replaces the liwilz/zmk-hid-io-plover-hid v0.3-compat fork used on v0.3).
     - name: zmk-hid-io-plover-hid
-      remote: liwilz
-      revision: v0.3-compat
+      remote: petercpark
+      revision: d895457418590dddf628c5ae907b39deec7095ff
+    # Removed for the migration: hammerbeam-slideshow (nice_view_custom, LVGL 8; the
+    # halves use the stock nice_view shield for now) and prospector-zmk-module.
   self:
     path: config
