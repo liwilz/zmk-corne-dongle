@@ -7,14 +7,10 @@ manifest:
     - name: petercpark
       url-base: https://github.com/petercpark
   projects:
-    # ZMK main (Zephyr 4.1) + cormoran's custom Studio protocol and DYA changes.
-    # The v0.3 setup lives on the `main` branch of this repo (zmk: v0.3-branch+dya).
     - name: zmk
       remote: cormoran
       revision: main+dya
       import: app/west.yml
-    # cormoran modules. On `main` these were pinned to their zmk-v0.3.0.0 tags; the
-    # module `main` branches are tried here (compatibility with Zephyr 4.1 untested).
     - name: zmk-behavior-runtime-sensor-rotate
       remote: cormoran
       revision: main
@@ -30,11 +26,44 @@ manifest:
     - name: zmk-module-runtime-input-processor
       remote: cormoran
       revision: zmk-v0.4.0.0
+    # Runtime-editable combos. `import: true` also pulls in zmk-feature-custom-settings
+    - name: zmk-feature-runtime-combo
+      remote: cormoran
+      revision: main
+      import: true
+    # Modules DYA Studio looks for (one per page/feature). Remove any you don't need.
+    - name: zmk-feature-runtime-macro        # Macros & Combos: macros
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-runtime-tapdance     # Macros & Combos: tap dances
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-device-info          # Troubleshooting: firmware/build info
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-watchdog             # Troubleshooting: freeze/crash incidents
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-input-stream         # live key presses in the keymap editor
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-os-detection         # Connection: detected host OS
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-default-layer        # Connection: default layer per endpoint
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-zephyr-setting-expose  # Settings: advanced firmware settings
+      remote: cormoran
+      revision: main
+    # Reflash the dongle without the reset button: open its serial port at 1200 baud.
+    - name: zmk-feature-cdc-acm-bootloader-trigger
+      remote: cormoran      # fork of sekigon-gonnoc's original, adds CI/tests only
+      revision: main
     - name: zmk-dongle-display
       remote: englmaxi
       revision: main
     # Plover HID (steno). Upstream module, pinned to a commit known to build on ZMK main
-    # (replaces the liwilz/zmk-hid-io-plover-hid v0.3-compat fork used on v0.3).
     - name: zmk-hid-io-plover-hid
       remote: petercpark
       revision: d895457418590dddf628c5ae907b39deec7095ff
