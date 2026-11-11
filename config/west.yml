@@ -7,14 +7,10 @@ manifest:
     - name: petercpark
       url-base: https://github.com/petercpark
   projects:
-    # ZMK main (Zephyr 4.1) + cormoran's custom Studio protocol and DYA changes.
-    # The v0.3 setup lives on the `main` branch of this repo (zmk: v0.3-branch+dya).
     - name: zmk
       remote: cormoran
       revision: main+dya
       import: app/west.yml
-    # cormoran modules. On `main` these were pinned to their zmk-v0.3.0.0 tags; the
-    # module `main` branches are tried here (compatibility with Zephyr 4.1 untested).
     - name: zmk-behavior-runtime-sensor-rotate
       remote: cormoran
       revision: main
@@ -30,11 +26,15 @@ manifest:
     - name: zmk-module-runtime-input-processor
       remote: cormoran
       revision: zmk-v0.4.0.0
+    # Runtime-editable combos. `import: true` also pulls in zmk-feature-custom-settings
+    - name: zmk-feature-runtime-combo
+      remote: cormoran
+      revision: main
+      import: true
     - name: zmk-dongle-display
       remote: englmaxi
       revision: main
     # Plover HID (steno). Upstream module, pinned to a commit known to build on ZMK main
-    # (replaces the liwilz/zmk-hid-io-plover-hid v0.3-compat fork used on v0.3).
     - name: zmk-hid-io-plover-hid
       remote: petercpark
       revision: d895457418590dddf628c5ae907b39deec7095ff
