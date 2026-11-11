@@ -31,6 +31,35 @@ manifest:
       remote: cormoran
       revision: main
       import: true
+    # Modules DYA Studio looks for (one per page/feature). Remove any you don't need.
+    - name: zmk-feature-runtime-macro        # Macros & Combos: macros
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-runtime-tapdance     # Macros & Combos: tap dances
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-device-info          # Troubleshooting: firmware/build info
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-watchdog             # Troubleshooting: freeze/crash incidents
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-input-stream         # live key presses in the keymap editor
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-os-detection         # Connection: detected host OS
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-default-layer        # Connection: default layer per endpoint
+      remote: cormoran
+      revision: main
+    - name: zmk-feature-zephyr-setting-expose  # Settings: advanced firmware settings
+      remote: cormoran
+      revision: main
+    # Reflash the dongle without the reset button: open its serial port at 1200 baud.
+    - name: zmk-feature-cdc-acm-bootloader-trigger
+      remote: cormoran      # fork of sekigon-gonnoc's original, adds CI/tests only
+      revision: main
     - name: zmk-dongle-display
       remote: englmaxi
       revision: main

@@ -21,6 +21,12 @@
         rows = <0>;
         events = <0>;
     };
+
+    /* Reboot into the UF2 bootloader when the Studio serial port is opened at 1200 baud
+     * and closed (auto-detects the CDC ACM port from the studio-rpc-usb-uart snippet). */
+    bootloader_trigger: bootloader_trigger {
+        compatible = "zmk,cdc-acm-bootloader-trigger";
+    };
 };
 
 &pinctrl {
