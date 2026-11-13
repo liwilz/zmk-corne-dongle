@@ -53,6 +53,34 @@
             #sensor-binding-cells = <0>;
             tap-ms = <0>;
         };
+
+        /* Shift on Space/Enter that only counts as Shift for keys on the OPPOSITE hand.
+         * Pressing it together with a same-hand key quickly gives the tap (Space/Enter) instead.
+         * Holding it past tapping-term-ms gives a plain Shift for any key.
+         * Positions: row0 0-12, row1 13-27, row2 28-41, thumbs 42-47. The centre keys
+         * (6, 19-21, 34, 35) are not listed on purpose, so they never trigger the hold.
+         * To fall back to a plain key, swap `&shift_space LSHFT SPACE` for `&kp SPACE`.
+         * Tuning: flavor "hold-preferred" without hold-trigger-on-release gives instant Shift
+         * but misfires on rolls. */
+        shift_space: shift_space {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <7 8 9 10 11 12 22 23 24 25 26 27 36 37 38 39 40 41 45 46 47>;
+            hold-trigger-on-release;
+            bindings = <&kp>, <&kp>;
+        };
+
+        shift_enter: shift_enter {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 13 14 15 16 17 18 28 29 30 31 32 33 42 43 44>;
+            hold-trigger-on-release;
+            bindings = <&kp>, <&kp>;
+        };
     };
 
     rgb_encoder: rgb_encoder {
@@ -68,6 +96,163 @@
         tap-ms = <100>;
     };
 
+
+    /* Same-finger chords (top+home, home+bottom of one column), after the Kombol layout
+     * (https://github.com/skychil/kombol), base layer only. Defaults live here; DYA Studio
+     * can override or reset each slot at runtime. Shift turns - = [ ] into _ + { }.
+     * Key positions: row0 0-12, row1 13-27, row2 28-41, thumbs 42-47. */
+    runtime_combo_defaults {
+        compatible = "cormoran,runtime-combo-defaults";
+
+        /* Space + Enter together: hold the Fn layer. Never a real shortcut, so no clash. */
+        combo_fn_layer {
+            key-positions = <44 45>;
+            bindings = <&mo 3>;
+            layers = <0>;
+            display-name = "Fn layer (Space+Enter)";
+        };
+
+        combo_exclaim {
+            key-positions = <1 14>;
+            bindings = <&kp EXCL>;
+            layers = <0>;
+            display-name = "!";
+        };
+
+        combo_grave {
+            key-positions = <14 29>;
+            bindings = <&kp GRAVE>;
+            layers = <0>;
+            display-name = "`";
+        };
+
+        combo_at {
+            key-positions = <2 15>;
+            bindings = <&kp AT>;
+            layers = <0>;
+            display-name = "@";
+        };
+
+        combo_tilde {
+            key-positions = <15 30>;
+            bindings = <&kp TILDE>;
+            layers = <0>;
+            display-name = "~";
+        };
+
+        combo_hash {
+            key-positions = <3 16>;
+            bindings = <&kp HASH>;
+            layers = <0>;
+            display-name = "#";
+        };
+
+        combo_dollar {
+            key-positions = <16 31>;
+            bindings = <&kp DLLR>;
+            layers = <0>;
+            display-name = "$";
+        };
+
+        combo_percent {
+            key-positions = <4 17>;
+            bindings = <&kp PRCNT>;
+            layers = <0>;
+            display-name = "%";
+        };
+
+        combo_caret {
+            key-positions = <17 32>;
+            bindings = <&kp CARET>;
+            layers = <0>;
+            display-name = "^";
+        };
+
+        combo_ampersand {
+            key-positions = <5 18>;
+            bindings = <&kp AMPS>;
+            layers = <0>;
+            display-name = "&";
+        };
+
+        combo_asterisk {
+            key-positions = <18 33>;
+            bindings = <&kp ASTRK>;
+            layers = <0>;
+            display-name = "*";
+        };
+
+        combo_lparen {
+            key-positions = <7 22>;
+            bindings = <&kp LPAR>;
+            layers = <0>;
+            display-name = "(";
+        };
+
+        combo_rparen {
+            key-positions = <22 36>;
+            bindings = <&kp RPAR>;
+            layers = <0>;
+            display-name = ")";
+        };
+
+        combo_lbracket {
+            key-positions = <8 23>;
+            bindings = <&kp LBKT>;
+            layers = <0>;
+            display-name = "[";
+        };
+
+        combo_rbracket {
+            key-positions = <23 37>;
+            bindings = <&kp RBKT>;
+            layers = <0>;
+            display-name = "]";
+        };
+
+        combo_lbrace {
+            key-positions = <9 24>;
+            bindings = <&kp LBRC>;
+            layers = <0>;
+            display-name = "{";
+        };
+
+        combo_rbrace {
+            key-positions = <24 38>;
+            bindings = <&kp RBRC>;
+            layers = <0>;
+            display-name = "}";
+        };
+
+        combo_langle {
+            key-positions = <10 25>;
+            bindings = <&kp LT>;
+            layers = <0>;
+            display-name = "<";
+        };
+
+        combo_rangle {
+            key-positions = <25 39>;
+            bindings = <&kp GT>;
+            layers = <0>;
+            display-name = ">";
+        };
+
+        combo_minus {
+            key-positions = <11 26>;
+            bindings = <&kp MINUS>;
+            layers = <0>;
+            display-name = "-";
+        };
+
+        combo_equal {
+            key-positions = <26 40>;
+            bindings = <&kp EQUAL>;
+            layers = <0>;
+            display-name = "=";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -77,7 +262,7 @@
 &kp TAB        &kp Q  &kp W      &kp F     &kp P  &kp B                              &kp UP                &kp J            &kp L  &kp U      &kp Y    &kp SEMI  &kp BSPC
 &mt LCTRL ESC  &kp A  &kp R      &kp S     &kp T  &kp G                    &kp LEFT  &kp ENTER  &kp RIGHT  &kp M            &kp N  &kp E      &kp I    &kp O     &kp SQT
 &lt 3 GRAVE    &kp Z  &kp X      &kp C     &kp D  &kp V       &kp SPACE              &kp DOWN              &kp K            &kp H  &kp COMMA  &kp DOT  &kp FSLH  &lt 3 BSLH
-                                 &kp LGUI  &mo 1  &mt LSHFT SPACE                                          &mt RSHFT ENTER  &mo 2  &kp RALT
+                                 &kp LGUI  &kp LALT  &shift_space LSHFT SPACE                              &shift_enter RSHFT ENTER  &mo 1  &mo 2
             >;
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
