@@ -109,147 +109,147 @@
             key-positions = <44 45>;
             bindings = <&mo 3>;
             layers = <0>;
-            display-name = "Fn layer (Space+Enter)";
+            display-name = "Fn layer chord";
         };
 
         combo_exclaim {
             key-positions = <1 14>;
             bindings = <&kp EXCL>;
             layers = <0>;
-            display-name = "!";
+            display-name = "exclaim";
         };
 
         combo_grave {
             key-positions = <14 29>;
             bindings = <&kp GRAVE>;
             layers = <0>;
-            display-name = "`";
+            display-name = "grave";
         };
 
         combo_at {
             key-positions = <2 15>;
             bindings = <&kp AT>;
             layers = <0>;
-            display-name = "@";
+            display-name = "at";
         };
 
         combo_tilde {
             key-positions = <15 30>;
             bindings = <&kp TILDE>;
             layers = <0>;
-            display-name = "~";
+            display-name = "tilde";
         };
 
         combo_hash {
             key-positions = <3 16>;
             bindings = <&kp HASH>;
             layers = <0>;
-            display-name = "#";
+            display-name = "hash";
         };
 
         combo_dollar {
             key-positions = <16 31>;
             bindings = <&kp DLLR>;
             layers = <0>;
-            display-name = "$";
+            display-name = "dollar";
         };
 
         combo_percent {
             key-positions = <4 17>;
             bindings = <&kp PRCNT>;
             layers = <0>;
-            display-name = "%";
+            display-name = "percent";
         };
 
         combo_caret {
             key-positions = <17 32>;
             bindings = <&kp CARET>;
             layers = <0>;
-            display-name = "^";
+            display-name = "caret";
         };
 
         combo_ampersand {
             key-positions = <5 18>;
             bindings = <&kp AMPS>;
             layers = <0>;
-            display-name = "&";
+            display-name = "ampersand";
         };
 
         combo_asterisk {
             key-positions = <18 33>;
             bindings = <&kp ASTRK>;
             layers = <0>;
-            display-name = "*";
+            display-name = "asterisk";
         };
 
         combo_lparen {
             key-positions = <7 22>;
             bindings = <&kp LPAR>;
             layers = <0>;
-            display-name = "(";
+            display-name = "left paren";
         };
 
         combo_rparen {
             key-positions = <22 36>;
             bindings = <&kp RPAR>;
             layers = <0>;
-            display-name = ")";
+            display-name = "right paren";
         };
 
         combo_lbracket {
             key-positions = <8 23>;
             bindings = <&kp LBKT>;
             layers = <0>;
-            display-name = "[";
+            display-name = "left bracket";
         };
 
         combo_rbracket {
             key-positions = <23 37>;
             bindings = <&kp RBKT>;
             layers = <0>;
-            display-name = "]";
+            display-name = "right bracket";
         };
 
         combo_lbrace {
             key-positions = <9 24>;
             bindings = <&kp LBRC>;
             layers = <0>;
-            display-name = "{";
+            display-name = "left brace";
         };
 
         combo_rbrace {
             key-positions = <24 38>;
             bindings = <&kp RBRC>;
             layers = <0>;
-            display-name = "}";
+            display-name = "right brace";
         };
 
         combo_langle {
             key-positions = <10 25>;
             bindings = <&kp LT>;
             layers = <0>;
-            display-name = "<";
+            display-name = "less than";
         };
 
         combo_rangle {
             key-positions = <25 39>;
             bindings = <&kp GT>;
             layers = <0>;
-            display-name = ">";
+            display-name = "greater than";
         };
 
         combo_minus {
             key-positions = <11 26>;
             bindings = <&kp MINUS>;
             layers = <0>;
-            display-name = "-";
+            display-name = "minus";
         };
 
         combo_equal {
             key-positions = <26 40>;
             bindings = <&kp EQUAL>;
             layers = <0>;
-            display-name = "=";
+            display-name = "equal";
         };
     };
 
